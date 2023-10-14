@@ -37,15 +37,10 @@ jobs:
       - name: Installing Dependencies
         run: npm i
 
-      - name: Get affected apps
-        id: get-affected-apps
-        run: |
-          echo "affected_list=$(npx nx print-affected)" >> $GITHUB_ENV
-          affected_apps=${{ toJSON(env.affected_list) }}
-          echo "affected_apps=$affected_apps" >> $GITHUB_OUTPUT
+      - name: Generate build
+        run: npx nx build --project find-me
 
       - name: Save find-me build as artifact
-        if: ${{ contains(steps.get-affected-apps.outputs.affected-apps, 'find-me') }}
         uses: actions/upload-artifact@v3
         with:
           name: find-me-artifact
