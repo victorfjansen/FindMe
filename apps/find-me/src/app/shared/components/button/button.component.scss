@@ -1,0 +1,26 @@
+@import '../../../../styles/token.scss';
+
+.button__container {
+  &--outline {
+    padding: 8px 20px;
+    background: $fm-color-white-base;
+    color: $fm-color-black-base;
+    border: 1px solid $fm-color-black-base;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $fm-color-black-base;
+      color: $fm-color-white-base;
+    }
+  }
+
+  &--full-filled {
+    padding: 8px 20px;
+    background: $fm-color-black-base;
+    border: 1px solid $fm-color-black-base;
+    color: $fm-color-white-base;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+}

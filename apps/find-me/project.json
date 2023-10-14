@@ -2,7 +2,7 @@
   "name": "find-me",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "find-me",
+  "prefix": "fm",
   "sourceRoot": "apps/find-me/src",
   "tags": [],
   "targets": {

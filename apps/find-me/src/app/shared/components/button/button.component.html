@@ -1,0 +1,8 @@
+<button
+  [class.button__container--outline]="outline"
+  [class.button__container--full-filled]="!outline"
+  (click)="clickEvent.emit()"
+  class="main-button"
+>
+  {{ label }}
+</button>
