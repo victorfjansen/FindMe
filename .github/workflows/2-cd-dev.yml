@@ -38,7 +38,7 @@ jobs:
         run: npm i
 
       - uses: nrwl/nx-set-shas@v3
-      - run: npx nx affected -t build --parallel=3
+      - run: npx nx affected:build
 
       - name: Save find-me build as artifact
         uses: actions/upload-artifact@v3
