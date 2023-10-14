@@ -41,7 +41,7 @@ jobs:
         id: get-affected-apps
         run: |
           affected_list=$(nx print-affected)
-          affected_apps=${{ toJSON(affected_list) }}
+          affected_apps=${{ toJSON($affected_list) }}
           echo "affected_apps=$affected_apps" >> $GITHUB_OUTPUT
 
       - name: Save find-me build as artifact
