@@ -28,3 +28,28 @@ jobs:
         with:
           name: findMe-artifact
           path: dist/apps/find-me
+
+  deploy-to-s3:
+    name: Deploy FindMe Application
+    needs: prepare-artifact
+    runs: ubuntu-latest
+    environment: aws_auth
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download FindMe
+        uses: actions/download-artifact@v3
+        with:
+          name: findMe-artifact
+          path: dist/apps/find-me
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: 'dist/apps/find-me'
