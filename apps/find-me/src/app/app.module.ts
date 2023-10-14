@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+
+import { APP_ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { FindMeContainerComponent } from './container';
+import { HomeModule } from './pages/home/home.module';
+import { HeaderModule } from './shared/components/header/header.module';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+  declarations: [
+    AppComponent,
+    FindMeContainerComponent,
   ],
-  providers: [],
+  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES), HomeModule, HeaderModule],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
