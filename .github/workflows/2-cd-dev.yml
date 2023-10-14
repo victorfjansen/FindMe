@@ -21,7 +21,10 @@ jobs:
 
       - uses: nrwl/nx-set-shas@v3
       - run: npm i
-
-      - run: npx nx affected -t lint --parallel=3
-      - run: npx nx affected -t test --parallel=3
       - run: npx nx affected -t build --parallel=3
+
+      - name: Saving FindMe build as artifact
+        uses: actions/checkout@v3
+        with:
+          name: findMe-artifact
+          path: dist/apps/find-me
