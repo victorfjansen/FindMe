@@ -38,7 +38,7 @@ jobs:
         run: npm i
 
       - name: Generate build
-        run: npx nx build find-me
+        run: npx nx build --project find-me
 
       - name: Save find-me build as artifact
         uses: actions/upload-artifact@v3
