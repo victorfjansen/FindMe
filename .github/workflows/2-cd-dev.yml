@@ -1,0 +1,51 @@
+name: CD workflow - Dev Environment
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  prepare-artifact:
+    name: Creating Application Artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.18.0'
+          check-latest: true
+
+      - name: Getting node cache path
+        id: node-cache-dir-path
+        run: |
+          cache_dir="~/.npm"
+          echo "cache_dir=$cache_dir" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v3
+        id: node-cache
+        with:
+          path: ${{ steps.node-cache-dir-path.outputs.cache_dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Installing Dependencies
+        run: npm i
+
+      - name: Get affected apps
+        id: get-affected-apps
+        run: |
+          affected_apps=$(./node_modules/.bin/nx affected:apps --plain)
+          echo "affected_apps=$affected_apps" >> $GITHUB_OUTPUT
+
+      - name: Save find-me build as artifact
+        if: ${{ contains(steps.get-affected-apps.outputs.affected-apps, 'find-me') }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: find-me-artifact
+          path: dist/apps/find-me
