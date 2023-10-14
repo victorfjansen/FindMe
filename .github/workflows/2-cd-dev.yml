@@ -40,7 +40,7 @@ jobs:
       - name: Get affected apps
         id: get-affected-apps
         run: |
-          echo "affected_list=$(nx print-affected)" >> $GITHUB_ENV
+          echo "affected_list=$(npx nx print-affected)" >> $GITHUB_ENV
           affected_apps=${{ toJSON(env.affected_list) }}
           echo "affected_apps=$affected_apps" >> $GITHUB_OUTPUT
 
