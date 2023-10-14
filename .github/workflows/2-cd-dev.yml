@@ -35,9 +35,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Installing Dependencies
-        run: npm i
-
       - uses: nrwl/nx-set-shas@v3
+      - run: npm i
+
       - run: npx nx affected:build
 
       - name: Save find-me build as artifact
