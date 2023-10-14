@@ -32,7 +32,7 @@ jobs:
   deploy-to-s3:
     name: Deploy FindMe Application
     needs: prepare-artifact
-    runs: ubuntu-latest
+    runs-on: ubuntu-latest
     environment: aws_auth
     timeout-minutes: 20
     steps:
