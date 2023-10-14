@@ -18,33 +18,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.18.0'
-          check-latest: true
-
-      - name: Getting node cache path
-        id: node-cache-dir-path
-        run: |
-          cache_dir="~/.npm"
-          echo "cache_dir=$cache_dir" >> $GITHUB_OUTPUT
-
-      - uses: actions/checkout@v3
-        id: node-cache
-        with:
-          path: ${{ steps.node-cache-dir-path.outputs.cache_dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Installing Dependencies
-        run: npm i
 
       - uses: nrwl/nx-set-shas@v3
+      - run: npm i
 
       - run: npx nx affected -t lint --parallel=3
       - run: npx nx affected -t test --parallel=3
       - run: npx nx affected -t build --parallel=3
-
-      - name: Save find-me build as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: find-me-artifact
-          path: dist/apps/find-me
