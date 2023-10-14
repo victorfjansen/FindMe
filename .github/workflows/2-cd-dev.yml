@@ -37,6 +37,9 @@ jobs:
       - name: Installing Dependencies
         run: npm i
 
+      - name: list
+        run: ls
+
       - name: Generate build
         run: npx nx build --project find-me
 
