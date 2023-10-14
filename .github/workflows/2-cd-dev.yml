@@ -40,7 +40,7 @@ jobs:
       - name: Get affected apps
         id: get-affected-apps
         run: |
-          affected_apps=$(./node_modules/.bin/nx affected:apps --plain)
+          affected_apps=$(npx nx affected:apps --plain)
           echo "affected_apps=$affected_apps" >> $GITHUB_OUTPUT
 
       - name: Save find-me build as artifact
