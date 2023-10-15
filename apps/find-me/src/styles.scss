@@ -1,3 +1,5 @@
+@import './styles/token';
+
 @font-face {
   font-family: 'Poppins';
   src: url('assets/fonts/poppins/Poppins-Regular.ttf') format('truetype');
@@ -17,4 +19,8 @@
   padding: 0px;
   font-family: 'Poppins';
   font-size: 0.9rem;
+}
+
+body {
+  background: $fm-color-white-base;
 }

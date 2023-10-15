@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+
+@Component({
+  template: `<fm-button>generic text</fm-button>`,
+})
+class TestHostComponent { }
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
@@ -8,7 +14,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonComponent],
+      declarations: [ButtonComponent, TestHostComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ButtonComponent);
@@ -31,12 +37,11 @@ describe('ButtonComponent', () => {
   })
 
   it(`${ButtonComponent.name} SHOULD have a correct label accordingly to the input property`, () => {
-    const genericLabel = 'genericLabel'
+    const textFixture = TestBed.createComponent(TestHostComponent)
 
-    component.label = genericLabel
     fixture.detectChanges()
 
-    const buttonElement = (<HTMLButtonElement>fixture.debugElement.query(By.css('.main-button')).nativeElement)
-    expect(buttonElement.innerHTML.trim()).toStrictEqual(genericLabel)
+    const buttonElement = (<HTMLButtonElement>textFixture.debugElement.query(By.css('.main-button')).nativeElement)
+    expect(buttonElement.textContent).toStrictEqual('generic text')
   })
 });
