@@ -1,8 +1,9 @@
 <button
   [class.button__container--outline]="outline"
   [class.button__container--full-filled]="!outline"
+  [class.button__container--full-page]="fullPage"
   (click)="clickEvent.emit()"
   class="main-button"
 >
-  {{ label }}
+  <ng-content></ng-content>
 </button>

@@ -1,3 +1,5 @@
+@import '../../../../styles/token.scss';
+
 .header {
   display: flex;
   justify-content: center;
@@ -20,6 +22,14 @@
       &__logo {
         width: 54px;
         height: 54px;
+      }
+
+      &__menu {
+        color: $fm-color-black-base;
+
+        @include breakpoint('md') {
+          display: none;
+        }
       }
     }
 

@@ -1,14 +1,20 @@
-<section class="home-section">
-  <article></article>
-
-  <div class="home-section__text-container">
-    <h1 class="home-section__text-container__title">
-      Busca poderosa para encontrar lugares fantásticos
+<section class="hero-section">
+  <div class="hero-section__text-container">
+    <h1 class="hero-section__text-container__title">
+      Busca poderosa para encontrar
+      <span class="hero-section__text-container__title__highlight">
+        lugares fantásticos</span
+      >
     </h1>
 
-    <p class="home-section__text-container__subtitle">
+    <p class="hero-section__text-container__subtitle">
       Ajudamos você a encontrar locais perto de você por meio de um mapa
       interativo, rápido e fácil de usar
     </p>
+  </div>
+
+  <div class="hero-section__call-to-action">
+    <fm-button [fullPage]="true">Procurar lugares</fm-button>
+    <fm-button [fullPage]="true" [outline]="true">Saber mais</fm-button>
   </div>
 </section>

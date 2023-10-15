@@ -23,4 +23,12 @@
     cursor: pointer;
     transition: all 0.2s;
   }
+
+  &--full-page {
+    width: 80%;
+  }
+}
+
+.main-button {
+  width: 100%;
 }
