@@ -1,6 +1,8 @@
-import { Route } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
+
 import { FindMeContainerComponent } from './container';
-import { HomePageComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NgModule } from '@angular/core';
 
 export const APP_ROUTES: Route[] = [
   {
@@ -9,8 +11,18 @@ export const APP_ROUTES: Route[] = [
     children: [
       {
         path: '',
-        component: HomePageComponent
+        loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       }
     ]
   }
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(APP_ROUTES)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule { }
