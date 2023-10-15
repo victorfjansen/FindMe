@@ -5,6 +5,7 @@
         src="assets/find-me-logo.svg"
         alt="logo da FindMe"
         class="header__container__navigation__logo"
+        routerLink="/"
       />
       <p class="header__container__navigation__menu">
         Encontrar estabelecimentos
@@ -14,8 +15,10 @@
     </nav>
 
     <div class="header__container__actions">
-      <fm-button [outline]="true">Entrar</fm-button>
-      <fm-button>Começar</fm-button>
+      <fm-button [outline]="true" (clickEvent)="handleNavigate()"
+        >Entrar</fm-button
+      >
+      <fm-button (clickEvent)="handleNavigate()">Começar</fm-button>
     </div>
   </div>
 </header>
