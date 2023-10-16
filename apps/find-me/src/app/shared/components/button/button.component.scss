@@ -22,6 +22,10 @@
     color: $fm-color-white-base;
     cursor: pointer;
     transition: all 0.2s;
+
+    &:hover {
+      background: $fm-color-black-light;
+    }
   }
 
   &--full-page {
