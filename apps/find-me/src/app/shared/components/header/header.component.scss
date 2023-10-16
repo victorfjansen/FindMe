@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4.5rem;
+  height: 4.7rem;
 
   &__container {
     max-width: 90%;
@@ -54,9 +54,10 @@
 
         &__floating-menu {
           position: absolute;
+          left: 0;
           bottom: 0;
-          width: 90vw;
-          height: 90vh;
+          width: 100vw;
+          height: calc(100vh - 4.7rem);
           background: $fm-color-white-base;
           z-index: 100;
           overflow: hidden;
@@ -64,6 +65,7 @@
           li {
             list-style: none;
             margin-top: 2rem;
+            margin-left: 2rem;
 
             a {
               color: $fm-color-black-light;
@@ -79,7 +81,8 @@
 
           &__call-to-action {
             position: absolute;
-            width: 100%;
+            width: 90%;
+            margin-left: 2rem;
             bottom: 2rem;
           }
         }
