@@ -55,9 +55,9 @@
         &__floating-menu {
           position: absolute;
           left: 0;
-          bottom: 0;
+          top: 4.7rem;
           width: 100vw;
-          height: calc(100vh - 4.7rem);
+          height: 87dvh;
           background: $fm-color-white-base;
           z-index: 100;
           overflow: hidden;
@@ -82,7 +82,13 @@
           &__call-to-action {
             position: absolute;
             width: 90%;
-            margin-left: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
             bottom: 2rem;
           }
         }
