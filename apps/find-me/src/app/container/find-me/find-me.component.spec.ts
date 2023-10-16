@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FindMeContainerComponent } from './find-me.component';
 import { HeaderModule } from '../../shared/components/header/header.module';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from "@angular/router/testing";
 import { By } from '@angular/platform-browser';
 import { HeaderComponent } from '../../shared';
 
@@ -12,7 +12,7 @@ describe('FindMeContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FindMeContainerComponent],
-      imports: [HeaderModule, RouterModule]
+      imports: [HeaderModule, RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FindMeContainerComponent);
