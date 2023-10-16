@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 72px;
+  height: 4.5rem;
 
   &__container {
     max-width: 90%;
@@ -17,12 +17,18 @@
     &__navigation {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 2rem;
+      position: relative;
 
       &__logo {
         width: 44px;
         height: 44px;
         cursor: pointer;
+
+        &--small {
+          width: 94px;
+          cursor: inherit;
+        }
       }
 
       &__menu {
@@ -37,6 +43,47 @@
     &__actions {
       display: flex;
       gap: 1rem;
+
+      &--mobile {
+        &__menu {
+          width: 30px;
+          height: 30px;
+          padding: 0.25rem;
+          cursor: pointer;
+        }
+
+        &__floating-menu {
+          position: absolute;
+          bottom: 0;
+          width: 90vw;
+          height: calc(100vh - 4.5rem);
+          background: $fm-color-white-base;
+          z-index: 100;
+          overflow: hidden;
+
+          li {
+            list-style: none;
+            margin-top: 2rem;
+
+            a {
+              color: $fm-color-black-light;
+              text-decoration: none;
+              font-size: 1.25rem;
+              transition: all 0.1s;
+
+              &:hover {
+                color: $fm-color-blue-dark;
+              }
+            }
+          }
+
+          &__call-to-action {
+            position: absolute;
+            width: 100%;
+            bottom: 2rem;
+          }
+        }
+      }
     }
   }
 }

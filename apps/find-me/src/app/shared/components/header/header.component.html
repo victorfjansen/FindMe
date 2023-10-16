@@ -2,9 +2,14 @@
   <div class="header__container">
     <nav class="header__container__navigation">
       <img
-        src="assets/find-me-logo.svg"
+        [src]="
+          isBiggerMediumSize
+            ? 'assets/find-me-logo.svg'
+            : 'assets/find-me-logo-text.svg'
+        "
         alt="logo da FindMe"
         class="header__container__navigation__logo"
+        [class.header__container__navigation__logo--small]="!isBiggerMediumSize"
         routerLink="/"
       />
       <p class="header__container__navigation__menu">
@@ -14,11 +19,43 @@
       <p class="header__container__navigation__menu">Quem somos</p>
     </nav>
 
-    <div class="header__container__actions">
-      <fm-button [outline]="true" (clickEvent)="handleNavigate()"
+    <div
+      class="header__container__actions"
+      *ngIf="isBiggerMediumSize; else mobileAction"
+    >
+      <fm-button
+        [outline]="true"
+        (clickEvent)="handleNavigate()"
+        class="join-button"
         >Entrar</fm-button
       >
       <fm-button (clickEvent)="handleNavigate()">Começar</fm-button>
     </div>
+
+    <ng-template #mobileAction>
+      <img
+        src="assets/menu-hamburguer.svg"
+        alt="menu de ações mobile"
+        class="header__container__actions--mobile__menu"
+        (click)="isFloatingMenuActivated = !isFloatingMenuActivated"
+      />
+
+      <div
+        class="header__container__actions--mobile__floating-menu"
+        *ngIf="isFloatingMenuActivated"
+      >
+        <ul>
+          <li><a href="">Encontrar estabelecimentos</a></li>
+          <li><a href="">Categorias</a></li>
+          <li><a href="">Quem somos</a></li>
+        </ul>
+
+        <div
+          class="header__container__actions--mobile__floating-menu__call-to-action"
+        >
+          <fm-button>Encontrar sua próxima aventura 🚀</fm-button>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </header>
