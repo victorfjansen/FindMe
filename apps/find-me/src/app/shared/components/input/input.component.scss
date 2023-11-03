@@ -1,0 +1,23 @@
+@import '../../../../styles/token.scss';
+
+.input-container {
+  &__title {
+    font-size: 0.8rem;
+    color: $fm-color-gray-3;
+  }
+
+  &__input {
+    border: 1px solid $fm-color-gray-2;
+    border-radius: 4px;
+    height: 1.8rem;
+    padding: 2px;
+    padding-left: 0.4rem;
+    width: 100%;
+  }
+
+  &__error-message {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    color: $fm-color-red;
+  }
+}

@@ -1,20 +1,19 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FindMeContainerComponent } from './container';
-import { HomeModule } from './pages/home/home.module';
-import { HeaderModule } from './shared/components/header/header.module';
+import { HeaderComponent } from './shared';
 
 @NgModule({
   declarations: [AppComponent, FindMeContainerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule,
-    HeaderModule,
+    HeaderComponent
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

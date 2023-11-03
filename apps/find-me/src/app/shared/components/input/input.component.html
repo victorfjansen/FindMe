@@ -1,0 +1,9 @@
+<div class="input-container">
+  <p class="input-container__title">{{ inputName | titlecase }}</p>
+  <input class="input-container__input" [formControl]="formControl" [type]="inputType" />
+  @if(isErrorMessageEnabled) {
+  <p class="input-container__error-message">
+    {{ errorMessage }}
+  </p>
+  }
+</div>

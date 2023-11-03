@@ -1,1 +1,26 @@
-<section>login</section>
+<section class="login-section">
+  <article class="login-section__white-color">
+    <div class="login-section__white-color__text-container">
+      <h2 class="login-section__white-color__text-container__title">
+        Bem vindo ao FindMe <br />
+        Entre para continuar.
+      </h2>
+
+      <div class="login-section__white-color__text-container__form">
+        <fm-input inputName="email" errorMessage="Digite um email válido!"></fm-input>
+        <fm-input inputName="senha" inputType="password"
+          errorMessage="Digite uma senha de no mínimo 8 dígitos!"></fm-input>
+      </div>
+
+      <p class="login-section__white-color__text-container__subtitle">
+        Não tem conta?
+        <span class="login-section__white-color__text-container__subtitle__high-light">Criar nova conta.</span>
+      </p>
+
+      <div class="login-section__white-color__submit-button">
+        <fm-button [fullPage]="true">Entrar</fm-button>
+      </div>
+    </div>
+  </article>
+  <article class="login-section__map-background"></article>
+</section>
