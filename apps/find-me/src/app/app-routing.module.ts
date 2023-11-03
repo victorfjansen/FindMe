@@ -1,8 +1,7 @@
+import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
 import { FindMeContainerComponent } from './container';
-import { LoginComponent } from './pages/login/login.component';
-import { NgModule } from '@angular/core';
 
 export const APP_ROUTES: Route[] = [
   {
@@ -11,13 +10,19 @@ export const APP_ROUTES: Route[] = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+        loadComponent: () =>
+          import('./pages/home/home.component').then(c => c.HomePageComponent),
       },
       {
         path: 'login',
-        component: LoginComponent
-      }
-    ]
+        loadComponent: () =>
+          import('./pages/login/login.component').then(c => c.LoginComponent),
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: '',
   }
 ];
 

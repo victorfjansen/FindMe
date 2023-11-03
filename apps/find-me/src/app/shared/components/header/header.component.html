@@ -1,17 +1,12 @@
 <header class="header">
   <div class="header__container">
     <nav class="header__container__navigation">
-      <img
-        [src]="
+      <img [src]="
           isBiggerMediumSize
             ? 'assets/find-me-logo.svg'
             : 'assets/find-me-logo-text.svg'
-        "
-        alt="logo da FindMe"
-        class="header__container__navigation__logo"
-        [class.header__container__navigation__logo--small]="!isBiggerMediumSize"
-        routerLink="/"
-      />
+        " alt="logo da FindMe" class="header__container__navigation__logo"
+        [class.header__container__navigation__logo--small]="!isBiggerMediumSize" routerLink="/" />
       <p class="header__container__navigation__menu">
         Encontrar estabelecimentos
       </p>
@@ -19,44 +14,33 @@
       <p class="header__container__navigation__menu">Quem somos</p>
     </nav>
 
-    <div
-      class="header__container__actions"
-      *ngIf="isBiggerMediumSize; else mobileAction"
-    >
-      <fm-button
-        [outline]="true"
-        (clickEvent)="handleNavigate()"
-        class="join-button"
-        >Entrar</fm-button
-      >
+    @if(isBiggerMediumSize) {
+    <div class="header__container__actions">
+      <fm-button [outline]="true" (clickEvent)="handleNavigate()" class="join-button">Entrar</fm-button>
       <fm-button (clickEvent)="handleNavigate()">Começar</fm-button>
     </div>
+    } @else {
 
-    <ng-template #mobileAction>
-      <img
-        src="assets/menu-hamburguer.svg"
-        alt="menu de ações mobile"
-        class="header__container__actions--mobile__menu"
-        (click)="isFloatingMenuActivated = !isFloatingMenuActivated"
-      />
+    <ng-container #mobileAction>
+      <img src="assets/menu-hamburguer.svg" alt="menu de ações mobile" class="header__container__actions--mobile__menu"
+        (click)="isFloatingMenuActivated = !isFloatingMenuActivated" />
 
-      <div
-        class="header__container__actions--mobile__floating-menu"
-        *ngIf="isFloatingMenuActivated"
-      >
+      @if(isFloatingMenuActivated) {
+      <div class="header__container__actions--mobile__floating-menu">
         <ul>
           <li><a href="">Encontrar estabelecimentos</a></li>
           <li><a href="">Categorias</a></li>
           <li><a href="">Quem somos</a></li>
         </ul>
 
-        <div
-          class="header__container__actions--mobile__floating-menu__call-to-action"
-        >
+        <div class="header__container__actions--mobile__floating-menu__call-to-action">
           <fm-button [outline]="true">Entrar</fm-button>
           <fm-button>Encontrar sua próxima aventura 🚀</fm-button>
         </div>
       </div>
-    </ng-template>
+      }
+
+    </ng-container>
+    }
   </div>
 </header>
