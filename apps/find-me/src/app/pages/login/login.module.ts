@@ -1,19 +1,26 @@
-import { NgModule } from "@angular/core";
-import { LoginComponent } from "./login.component";
-import { Route, RouterModule } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
+
+import { InputModule } from '../../shared/components/input/input.module';
+import { LoginComponent } from './login.component';
 
 const routes: Route[] = [
   {
     path: '',
-    component: LoginComponent
-  }
-]
-
+    component: LoginComponent,
+  },
+];
 
 @NgModule({
-  declarations: [
-    LoginComponent,
+  declarations: [LoginComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputModule,
+    RouterModule.forChild(routes),
   ],
-  imports: [RouterModule.forChild(routes)]
 })
-export class LoginModule { }
+export class LoginModule {}

@@ -11,18 +11,20 @@ export const APP_ROUTES: Route[] = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+        loadChildren: () =>
+          import('./pages/home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'login',
-        component: LoginComponent
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('./pages/login/login.module').then((m) => m.LoginModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(APP_ROUTES)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
