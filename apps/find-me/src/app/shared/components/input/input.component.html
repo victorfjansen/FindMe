@@ -1,0 +1,7 @@
+<div class="input-container">
+  <p class="input-container__title">{{ formControlName | titlecase }}</p>
+  <input [formControlName]="formControlName" class="input-container__input" />
+  <p class="input-container__error-message" *ngIf="isErrorMessageEnabled">
+    {{ errorMessage }}
+  </p>
+</div>

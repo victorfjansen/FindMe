@@ -23,4 +23,9 @@
 
 body {
   background: $fm-color-white-base;
+  overflow: hidden;
+}
+
+.container {
+  margin-top: 4.7rem;
 }
