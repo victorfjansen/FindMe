@@ -1,11 +1,11 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, inject, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
 
 import { BreakpointsEnum } from '../../enums';
 import { getResizeEvent$ } from '../../reusable';
-import { ButtonModule } from '../button/button.module';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'fm-header',
@@ -13,37 +13,35 @@ import { ButtonModule } from '../button/button.module';
   styleUrls: ['./header.component.scss'],
   standalone: true,
   imports: [
-    ButtonModule,
+    ButtonComponent,
     NgOptimizedImage,
     RouterModule
-  ]
+  ],
+  schemas: [NO_ERRORS_SCHEMA]
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   isBiggerMediumSize = true;
   isFloatingMenuActivated = false;
-  unsubscribe$ = new Subject<void>();
 
   router = inject(Router);
+  destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.handleResizeEvent();
   }
 
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
-
   handleNavigate(): void {
     this.router.navigate(['login']);
+    this.isFloatingMenuActivated = false;
   }
 
   private handleResizeEvent(): void {
     this.getSvgLogo({
       currentTarget: { innerWidth: window.innerWidth },
     } as unknown as Event);
+
     getResizeEvent$()
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: this.handleResizeFunctions.bind(this),
       });
@@ -58,11 +56,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       event.currentTarget as unknown as { innerWidth: number }
     ).innerWidth;
 
-    if (innerWidth > BreakpointsEnum.MEDIUM_BREAKPOINT) {
-      this.isBiggerMediumSize = true;
-      return;
-    }
-
-    this.isBiggerMediumSize = false;
+    this.isBiggerMediumSize = !!(innerWidth > BreakpointsEnum.MEDIUM_BREAKPOINT)
   }
 }

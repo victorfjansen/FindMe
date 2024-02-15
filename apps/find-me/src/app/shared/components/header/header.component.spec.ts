@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from './header.component';
+import { ButtonComponent } from '../button/button.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -10,7 +11,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent, RouterTestingModule],
+      imports: [HeaderComponent, ButtonComponent, RouterTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
