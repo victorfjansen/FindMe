@@ -34,8 +34,8 @@
         </ul>
 
         <div class="header__container__actions--mobile__floating-menu__call-to-action">
-          <fm-button [outline]="true">Entrar</fm-button>
-          <fm-button>Encontrar sua próxima aventura 🚀</fm-button>
+          <fm-button [outline]="true" (clickEvent)="handleNavigate()">Entrar</fm-button>
+          <fm-button (clickEvent)="handleNavigate()">Encontrar sua próxima aventura 🚀</fm-button>
         </div>
       </div>
       }
