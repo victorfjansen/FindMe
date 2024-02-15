@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonModule } from 'app/shared/components/button/button.module';
+import { ButtonComponent } from 'app/shared/components/button/button.component';
 
 @Component({
   selector: 'fm-home',
@@ -7,7 +7,7 @@ import { ButtonModule } from 'app/shared/components/button/button.module';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [
-    ButtonModule,
+    ButtonComponent,
   ]
 })
 export class HomePageComponent { }

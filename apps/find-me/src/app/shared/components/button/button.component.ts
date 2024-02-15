@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, NO_ERRORS_SCHEMA, Output } from '@angular/core';
 
 @Component({
   selector: 'fm-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  standalone: true,
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class ButtonComponent {
-  @Input() outline = false;
-  @Input() fullPage = false;
+  outline = input<boolean>(false);
+  fullPage = input<boolean>(false);
   @Output() clickEvent: EventEmitter<void> = new EventEmitter<void>()
 }

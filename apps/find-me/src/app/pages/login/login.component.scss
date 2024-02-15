@@ -61,8 +61,9 @@
   }
 
   &__map-background {
-    width: 50vw;
-    background: url('../../../assets/pictures/smartphone.jpg') no-repeat bottom center;
-    background-size: cover;
+    max-width: 50vw;
+    width: 100%s;
+    height: 100vh;
+    margin-top: -10rem;
   }
 }
