@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   handleNavigate(): void {
     this.router.navigate(['login']);
+    this.isFloatingMenuActivated = false;
   }
 
   private handleResizeEvent(): void {
